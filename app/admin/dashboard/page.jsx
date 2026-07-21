@@ -1,5 +1,6 @@
 "use client";
 
+import { API_URL } from "@/lib/api";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -60,7 +61,7 @@ export default function Dashboard() {
       }
 
       const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:4006"}/api/dashboard`,
+        `${API_URL}/api/dashboard`,
         {
           headers: {
             Authorization: `Bearer ${token}`

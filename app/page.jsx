@@ -1,5 +1,6 @@
 "use client";
 
+import { API_URL } from "@/lib/api";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -58,7 +59,7 @@ const Productpage = () => {
       setIsLoading(true);
       setError("");
       const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:4006"}/api/getproduct`
+        `${API_URL}/api/getproduct`
       );
 
       if (!res.data || !res.data.data) {
@@ -358,7 +359,7 @@ const Productpage = () => {
               const imageUrl = item.image
                 ? item.image.startsWith("http")
                   ? item.image
-                  : `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:4006"}/${item.image}`
+                  : `${API_URL}/${item.image}`
                 : "/no-image.png";
 
               return (

@@ -1,5 +1,6 @@
 "use client";
 
+import { API_URL } from "@/lib/api";
 import axios from "axios";
 import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -39,7 +40,7 @@ const CategoryWise = () => {
     try {
       setIsLoading(true);
       const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:4006"}/api/categoryproduct/${category}`
+        `${API_URL}/api/categoryproduct/${category}`
       );
       setProducts(res.data);
     } catch (error) {
@@ -264,7 +265,7 @@ const CategoryWise = () => {
                           item.thumbnail
                             ? item.thumbnail.startsWith("http")
                               ? item.thumbnail
-                              : `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:4006"}/${item.thumbnail}`
+                              : `${API_URL}/${item.thumbnail}`
                             : "/no-image.png"
                         }
                         alt={item.title}

@@ -1,5 +1,6 @@
 "use client";
 
+import { API_URL } from "@/lib/api";
 import React, {
   createContext,
   useContext,
@@ -17,7 +18,6 @@ import { useRouter } from "next/navigation";
 // ============================================================================
 const AppContext = createContext(null);
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4006";
 
 // Single axios instance. A request interceptor attaches the token
 // automatically so we never have to repeat `Authorization: Bearer ${token}`

@@ -1,5 +1,6 @@
 "use client";
 
+import { API_URL } from "@/lib/api";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -11,7 +12,7 @@ const CategorySection = () => {
   const getCategories = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:4006/api/getproduct"
+        `${API_URL}/api/getproduct`
       );
 
       const unique = [

@@ -1,5 +1,6 @@
 "use client";
 
+import { API_URL } from "@/lib/api";
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -60,7 +61,7 @@ const AddProduct = () => {
     try {
       setIsLoading(true);
       const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:4006"}/api/viewdetail/${id}`
+        `${API_URL}/api/viewdetail/${id}`
       );
       const p = res.data.details;
       setData({
@@ -77,7 +78,7 @@ const AddProduct = () => {
         setImagePreview(
           p.thumbnail.startsWith("http")
             ? p.thumbnail
-            : `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:4006"}/${p.thumbnail}`
+            : `${API_URL}/${p.thumbnail}`
         );
       }
     } catch (error) {
@@ -154,7 +155,7 @@ const AddProduct = () => {
 
       if (isEditing) {
         await axios.put(
-          `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:4006"}/api/update/${id}`,
+          `${API_URL}/api/update/${id}`,
           formData,
           {
             headers: {
@@ -165,7 +166,7 @@ const AddProduct = () => {
         setSuccess("Product updated successfully!");
       } else {
         await axios.post(
-          `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:4006"}/api/productcreate`,
+          `${API_URL}/api/productcreate`,
           formData,
           {
             headers: {

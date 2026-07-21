@@ -1,5 +1,6 @@
 "use client";
 
+import { API_URL } from "@/lib/api";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -57,7 +58,7 @@ export default function UsersPage() {
       }
 
       const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:4006"}/api/getuser`,
+        `${API_URL}/api/getuser`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

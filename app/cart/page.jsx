@@ -1,5 +1,6 @@
 "use client";
 
+import { API_URL } from "@/lib/api";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { 
@@ -238,7 +239,7 @@ const ViewCart = () => {
                 const imageUrl = item.productid?.thumbnail
                   ? item.productid.thumbnail.startsWith("http")
                     ? item.productid.thumbnail
-                    : `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:4006"}/${item.productid.thumbnail}`
+                    : `${API_URL}/${item.productid.thumbnail}`
                   : "/no-image.png";
 
                 return (

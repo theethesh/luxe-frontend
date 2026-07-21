@@ -1,5 +1,6 @@
 "use client";
 
+import { API_URL } from "@/lib/api";
 import axios from "axios";
 import { Eye, ShoppingCart, Star } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -13,7 +14,7 @@ const FeaturedProducts = () => {
   const getProducts = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:4006/api/getproduct"
+        `${API_URL}/api/getproduct`
       );
 
       setProducts(res.data.data.slice(0, 8));

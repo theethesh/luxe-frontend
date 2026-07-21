@@ -1,5 +1,6 @@
 "use client";
 
+import { API_URL } from "@/lib/api";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -14,7 +15,7 @@ const DealsSection = () => {
 
   const getDeals = async () => {
     try {
-      const res = await axios.get("http://localhost:4006/api/getproduct");
+      const res = await axios.get(`${API_URL}/api/getproduct`);
 
       // Demo: first 4 products as deals
       setProducts(res.data.data.slice(0, 4));

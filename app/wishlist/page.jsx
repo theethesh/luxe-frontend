@@ -1,5 +1,6 @@
 "use client";
 
+import { API_URL } from "@/lib/api";
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { 
@@ -246,7 +247,7 @@ const Wishlist = () => {
                 const imageUrl = w.productid?.thumbnail
                   ? w.productid.thumbnail.startsWith("http")
                     ? w.productid.thumbnail
-                    : `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:4006"}/${w.productid?.thumbnail}`
+                    : `${API_URL}/${w.productid?.thumbnail}`
                   : "/no-image.png";
 
                 return (

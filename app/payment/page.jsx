@@ -1,5 +1,6 @@
 "use client";
 
+import { API_URL } from "@/lib/api";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
@@ -88,7 +89,7 @@ const Payment = () => {
       setError("");
 
       const { data } = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:4006"}/api/createorder`,
+        `${API_URL}/api/createorder`,
         { addressId },
         {
           headers: {
@@ -114,7 +115,7 @@ const Payment = () => {
             console.log("Payment successful:", response);
             
             const verifyRes = await axios.post(
-              `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:4006"}/api/verifypayment`,
+              `${API_URL}/api/verifypayment`,
               {
                 razorpay_order_id: response.razorpay_order_id,
                 razorpay_payment_id: response.razorpay_payment_id,

@@ -1,5 +1,6 @@
 "use client";
 
+import { API_URL } from "@/lib/api";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -74,7 +75,7 @@ const ReviewOrder = () => {
       const token = localStorage.getItem("token");
 
       const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:4006"}/api/getaddress`,
+        `${API_URL}/api/getaddress`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -153,7 +154,7 @@ const ReviewOrder = () => {
       });
 
       const res = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:4006"}/api/placeorder`,
+        `${API_URL}/api/placeorder`,
         {
           addressId,
           paymentMethod: paymentEnum,
@@ -383,7 +384,7 @@ const ReviewOrder = () => {
                               item.productid?.thumbnail
                                 ? item.productid.thumbnail.startsWith("http")
                                   ? item.productid.thumbnail
-                                  : `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:4006"}/${item.productid.thumbnail}`
+                                  : `${API_URL}/${item.productid.thumbnail}`
                                 : "/no-image.png"
                             }
                             alt={item.productid?.title}

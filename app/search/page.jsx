@@ -1,5 +1,6 @@
 "use client";
 
+import { API_URL } from "@/lib/api";
 import axios from "axios";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -47,7 +48,7 @@ const Search = () => {
         setIsLoading(true);
         setError("");
         const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:4006"}/api/search?search=${search}`
+          `${API_URL}/api/search?search=${search}`
         );
         setProduct(res.data || []);
       } catch (error) {
@@ -206,7 +207,7 @@ const Search = () => {
                 const imageUrl = p.thumbnail
                   ? p.thumbnail.startsWith("http")
                     ? p.thumbnail
-                    : `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:4006"}/${p.thumbnail}`
+                    : `${API_URL}/${p.thumbnail}`
                   : "/no-image.png";
 
                 return (

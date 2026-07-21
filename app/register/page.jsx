@@ -1,5 +1,6 @@
 "use client";
 
+import { API_URL } from "@/lib/api";
 import React, { useState } from 'react';
 import axios from "axios";
 import Link from 'next/link';
@@ -102,7 +103,7 @@ const Register = () => {
 
     try {
       const res = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:4006"}/api/create`,
+        `${API_URL}/api/create`,
         data
       );
       

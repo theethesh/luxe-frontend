@@ -1,5 +1,6 @@
 "use client";
 
+import { API_URL } from "@/lib/api";
 import axios from "axios";
 import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -55,7 +56,7 @@ const ProductDetail = () => {
     try {
       setIsLoading(true);
       const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:4006"}/api/viewdetail/${id}`
+        `${API_URL}/api/viewdetail/${id}`
       );
       setDetail(res.data.details);
       setError("");
@@ -150,7 +151,7 @@ const ProductDetail = () => {
   const imageUrl = detail?.thumbnail
     ? detail.thumbnail.startsWith("http")
       ? detail.thumbnail
-      : `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:4006"}/${detail.thumbnail}`
+      : `${API_URL}/${detail.thumbnail}`
     : "/no-image.png";
 
   return (

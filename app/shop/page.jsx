@@ -1,5 +1,6 @@
 "use client";
 
+import { API_URL } from "@/lib/api";
 import React, { useState, useEffect, useCallback } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
@@ -54,8 +55,7 @@ export default function ShopPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4006";
-
+  
   const categories = [
     { id: "", name: "All Products", icon: Package },
     { id: "men", name: "Men's Fashion", icon: Crown },

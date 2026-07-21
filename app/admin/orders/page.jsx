@@ -1,5 +1,6 @@
 "use client";
 
+import { API_URL } from "@/lib/api";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -57,7 +58,7 @@ export default function Orders() {
       }
 
       const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:4006"}/api/getall`,
+        `${API_URL}/api/getall`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -83,7 +84,7 @@ export default function Orders() {
       const token = localStorage.getItem("token");
 
       await axios.put(
-        `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:4006"}/api/updateorderstatus/${id}`,
+        `${API_URL}/api/updateorderstatus/${id}`,
         { orderStatus: status },
         {
           headers: {
@@ -312,7 +313,7 @@ export default function Orders() {
                               src={
                                 order.products[0].productid.thumbnail?.startsWith("http")
                                   ? order.products[0].productid.thumbnail
-                                  : `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:4006"}/${order.products[0].productid.thumbnail}`
+                                  : `${API_URL}/${order.products[0].productid.thumbnail}`
                               }
                               alt={order.products[0].productid.title}
                               className="w-12 h-12 rounded-xl object-cover border border-white/5 group-hover:border-[#8B5CF6]/15 transition-all duration-300"

@@ -1,5 +1,6 @@
 "use client";
 
+import { API_URL } from "@/lib/api";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -43,7 +44,7 @@ const Product = () => {
       setIsLoading(true);
       setError("");
       const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:4006"}/api/getproduct`
+        `${API_URL}/api/getproduct`
       );
       setProduct(res.data.data || []);
     } catch (error) {
@@ -72,7 +73,7 @@ const Product = () => {
       }
 
       await axios.delete(
-        `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:4006"}/api/deleteproduct/${id}`,
+        `${API_URL}/api/deleteproduct/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -235,7 +236,7 @@ const Product = () => {
                     const imageUrl = p.thumbnail
                       ? p.thumbnail.startsWith("http")
                         ? p.thumbnail
-                        : `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:4006"}/${p.thumbnail}`
+                        : `${API_URL}/${p.thumbnail}`
                       : "/no-image.png";
 
                     return (

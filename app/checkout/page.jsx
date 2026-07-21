@@ -1,5 +1,6 @@
 "use client";
 
+import { API_URL } from "@/lib/api";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -55,7 +56,7 @@ const Checkout = () => {
       }
 
       const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:4006"}/api/getaddress`,
+        `${API_URL}/api/getaddress`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
